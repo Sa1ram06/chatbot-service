@@ -1,9 +1,12 @@
 const express = require("express");
 const OpenAI = require('openai');
 const bodyParser = require("body-parser");
+const cors = require('cors');  // Import cors
 
 const app = express();
 const port = process.env.PORT || 3000; // Use environment variable or default port
+
+app.use(cors());  // This will allow all origins
 
 // Include body-parser middleware to handle JSON data
 app.use(bodyParser.json());
