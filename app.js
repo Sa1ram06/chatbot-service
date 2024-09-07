@@ -1,43 +1,14 @@
-/*
-const OpenAI = require('openai');
-
-const openai = new OpenAI({
-  apiKey: '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',
-  baseURL: 'https://integrate.api.nvidia.com/v1',
-})
- 
-async function main() {
-  const completion = await openai.chat.completions.create({
-    model: "meta/llama-3.1-8b-instruct",
-    messages: [{"role":"user","content":"weekend trip ideas"}],
-    temperature: 0.2,
-    top_p: 0.7,
-    max_tokens: 1024,
-    stream: true
-  })
-   
-  for await (const chunk of completion) {
-    process.stdout.write(chunk.choices[0]?.delta?.content || '')
-  }
-  
-}
-
-main();
-*/
-
-const express = require('express');
+const express = require("express");
 const OpenAI = require('openai');
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = 3000; // Or any port you prefer
-
-const staticMiddleware = express.static("public");
+const port = process.env.PORT || 3000; // Use environment variable or default port
 
 // Include body-parser middleware to handle JSON data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // For form data handling
-app.use(staticMiddleware);
+
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -71,7 +42,7 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-// Start the server
+
 app.listen(port, () => {
-  console.log(`Chatbot running at http://localhost:${port}/chatbot.html`);
-});
+    console.log(`Server listening on port ${port}`);
+  });
