@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // For form data handling
 
 // Initialize OpenAI client
 const openai = new OpenAI({
-  apiKey: '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',
+  apiKey: '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',
   baseURL: 'https://integrate.api.nvidia.com/v1',
 });
 
